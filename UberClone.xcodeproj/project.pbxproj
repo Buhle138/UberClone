@@ -11,6 +11,8 @@
 		946510832C374200002C0128 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946510822C374200002C0128 /* Assets.xcassets */; };
 		946510862C374200002C0128 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946510852C374200002C0128 /* Preview Assets.xcassets */; };
 		946510962C37442E002C0128 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946510952C37442E002C0128 /* HomeView.swift */; };
+		946510982C37452F002C0128 /* UberMapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946510972C37452F002C0128 /* UberMapViewRepresentable.swift */; };
+		9465109A2C3749FD002C0128 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946510992C3749FD002C0128 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,9 @@
 		946510822C374200002C0128 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		946510852C374200002C0128 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		946510952C37442E002C0128 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		946510972C37452F002C0128 /* UberMapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberMapViewRepresentable.swift; sourceTree = "<group>"; };
+		946510992C3749FD002C0128 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		9465109B2C374BE4002C0128 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,12 +56,12 @@
 		9465107D2C3741FF002C0128 /* UberClone */ = {
 			isa = PBXGroup;
 			children = (
+				9465109B2C374BE4002C0128 /* Info.plist */,
 				946510902C3742C8002C0128 /* App */,
 				9465108F2C3742C1002C0128 /* Core */,
 				9465108E2C3742BE002C0128 /* Extensions */,
 				9465108D2C3742BA002C0128 /* Managers */,
 				9465108C2C3742A7002C0128 /* Models */,
-				9465107E2C3741FF002C0128 /* UberCloneApp.swift */,
 				946510822C374200002C0128 /* Assets.xcassets */,
 				946510842C374200002C0128 /* Preview Content */,
 			);
@@ -81,6 +86,7 @@
 		9465108D2C3742BA002C0128 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				946510992C3749FD002C0128 /* LocationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -104,6 +110,7 @@
 		946510902C3742C8002C0128 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				9465107E2C3741FF002C0128 /* UberCloneApp.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -119,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				946510952C37442E002C0128 /* HomeView.swift */,
+				946510972C37452F002C0128 /* UberMapViewRepresentable.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -193,7 +201,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9465109A2C3749FD002C0128 /* LocationManager.swift in Sources */,
 				9465107F2C3741FF002C0128 /* UberCloneApp.swift in Sources */,
+				946510982C37452F002C0128 /* UberMapViewRepresentable.swift in Sources */,
 				946510962C37442E002C0128 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,6 +335,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"UberClone/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = UberClone/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow us to find your location to find you nearby drivers";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -353,6 +365,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"UberClone/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = UberClone/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow us to find your location to find you nearby drivers";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
