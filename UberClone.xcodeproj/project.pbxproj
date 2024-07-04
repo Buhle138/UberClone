@@ -8,17 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		9465107F2C3741FF002C0128 /* UberCloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9465107E2C3741FF002C0128 /* UberCloneApp.swift */; };
-		946510812C3741FF002C0128 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946510802C3741FF002C0128 /* ContentView.swift */; };
 		946510832C374200002C0128 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946510822C374200002C0128 /* Assets.xcassets */; };
 		946510862C374200002C0128 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946510852C374200002C0128 /* Preview Assets.xcassets */; };
+		946510962C37442E002C0128 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946510952C37442E002C0128 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9465107B2C3741FF002C0128 /* UberClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UberClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9465107E2C3741FF002C0128 /* UberCloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberCloneApp.swift; sourceTree = "<group>"; };
-		946510802C3741FF002C0128 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		946510822C374200002C0128 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		946510852C374200002C0128 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		946510952C37442E002C0128 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +51,12 @@
 		9465107D2C3741FF002C0128 /* UberClone */ = {
 			isa = PBXGroup;
 			children = (
+				946510902C3742C8002C0128 /* App */,
+				9465108F2C3742C1002C0128 /* Core */,
+				9465108E2C3742BE002C0128 /* Extensions */,
+				9465108D2C3742BA002C0128 /* Managers */,
+				9465108C2C3742A7002C0128 /* Models */,
 				9465107E2C3741FF002C0128 /* UberCloneApp.swift */,
-				946510802C3741FF002C0128 /* ContentView.swift */,
 				946510822C374200002C0128 /* Assets.xcassets */,
 				946510842C374200002C0128 /* Preview Content */,
 			);
@@ -65,6 +69,58 @@
 				946510852C374200002C0128 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9465108C2C3742A7002C0128 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9465108D2C3742BA002C0128 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		9465108E2C3742BE002C0128 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9465108F2C3742C1002C0128 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				946510922C3743F3002C0128 /* Views */,
+				946510912C3743E5002C0128 /* ViewModel */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		946510902C3742C8002C0128 /* App */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		946510912C3743E5002C0128 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		946510922C3743F3002C0128 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				946510952C37442E002C0128 /* HomeView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +193,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				946510812C3741FF002C0128 /* ContentView.swift in Sources */,
 				9465107F2C3741FF002C0128 /* UberCloneApp.swift in Sources */,
+				946510962C37442E002C0128 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
