@@ -16,7 +16,7 @@ class LocationSearchViewModel: NSObject, ObservableObject {
     
     @Published var results = [MKLocalSearchCompletion]()
     
-    @Published var selectedLocation: String?
+    @Published var selectedLocationCoordinate: CLLocationCoordinate2D?
     
     private let searchCompleter = MKLocalSearchCompleter()
     
@@ -39,9 +39,37 @@ class LocationSearchViewModel: NSObject, ObservableObject {
     
     
     //The  purpose of this function is to select the location which the user has selected. 
-    func selectedLocation(_ location: String) {
-        self.selectedLocation = location
-        print("Debug: Selected location is \(self.selectedLocation)")
+    func selectedLocation(_ localSearch: MKLocalSearchCompletion) {
+        locationSearch(forLocalSearchCompletion: localSearch) { response, error in
+    
+            //THE CODE THAT WE ARE WRITTING HERE IS THE CODE OF THE COMPLETION HANLDER
+            //IF THERE IS AN ERROR WE HANLDE THE ERROR BUT IF THERE IS NO ERROR THEN WE GET THE COORDINATES (LONGITUDES AND LATITUDES)
+            if let error = error {
+                print("DEVUG: Location search failed with error \(error.localizedDescription)")
+                return
+            }
+            guard let item = response?.mapItems.first else {return}
+            
+            let coordinate = item.placemark.coordinate
+            
+            self.selectedLocationCoordinate = coordinate
+            
+            print("Debug: Location coordinates \(coordinate)")
+        }
+    }
+    
+    func locationSearch(forLocalSearchCompletion localSearch: MKLocalSearchCompletion, completion: @escaping MKLocalSearch.CompletionHandler ){
+        
+        let searchRequest = MKLocalSearch.Request()
+        
+        
+        //naturalLanguageQuery is the full address that we are searching for.
+        searchRequest.naturalLanguageQuery = localSearch.title.appending(localSearch.subtitle)
+        
+        let search = MKLocalSearch(request: searchRequest)
+        
+        search.start(completionHandler: completion)
+        
     }
 }
 

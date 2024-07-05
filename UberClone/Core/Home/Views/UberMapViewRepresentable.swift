@@ -32,8 +32,10 @@ struct UberMapViewRepresentable: UIViewRepresentable  {
     //We are going to use thie function below in order to update our map view. if the user makes changes
     //changes such as changes in their location.
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        if let selectedLocation = locationViewModel.selectedLocation {
-            print("Debug: Selected location in map view \(selectedLocation)")
+        
+        //We want to use this selected location on our mapview so that we can generate data
+        if let coordinate = locationViewModel.selectedLocationCoordinate {
+            print("Debug: Selected location in map view \(coordinate)")
         }
     }
     

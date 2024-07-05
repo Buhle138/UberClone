@@ -62,7 +62,7 @@ struct LocationSearchView: View {
                             .onTapGesture {
                                 //Selecting the location the user has clicked on
                                 //we are passing in the title which we will then use in our mapview representable so that we can use it to show it to the mapview representable.
-                                viewModel.selectedLocation(result.title)
+                                viewModel.selectedLocation(result)
                                 showLocationSearchView.toggle()
                                 
                                
