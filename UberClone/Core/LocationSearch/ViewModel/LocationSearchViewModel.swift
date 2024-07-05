@@ -21,7 +21,11 @@ class LocationSearchViewModel: NSObject, ObservableObject {
     //this query will be made by the user to search for their location
     //the searchCompleter will receive this query and return the results from the completer variable inside of the parameters of the completerDidUpdateResults method in your extension
     //we then asign those results inside the  results @Published field.
-    var queryFragment: String = ""
+    var queryFragment: String = "" {
+        didSet {
+            searchCompleter.queryFragment = queryFragment
+        }
+    }
     
     override init() {
         super.init()
