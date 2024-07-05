@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		944E39EB2C37F24000896E0E /* LocationSearchActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944E39EA2C37F24000896E0E /* LocationSearchActivationView.swift */; };
 		944E39ED2C37F59500896E0E /* MapViewActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944E39EC2C37F59500896E0E /* MapViewActionButton.swift */; };
+		944E39EF2C37F71B00896E0E /* LocationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944E39EE2C37F71B00896E0E /* LocationSearchView.swift */; };
 		9465107F2C3741FF002C0128 /* UberCloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9465107E2C3741FF002C0128 /* UberCloneApp.swift */; };
 		946510832C374200002C0128 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946510822C374200002C0128 /* Assets.xcassets */; };
 		946510862C374200002C0128 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946510852C374200002C0128 /* Preview Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		944E39EA2C37F24000896E0E /* LocationSearchActivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchActivationView.swift; sourceTree = "<group>"; };
 		944E39EC2C37F59500896E0E /* MapViewActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewActionButton.swift; sourceTree = "<group>"; };
+		944E39EE2C37F71B00896E0E /* LocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchView.swift; sourceTree = "<group>"; };
 		9465107B2C3741FF002C0128 /* UberClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UberClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9465107E2C3741FF002C0128 /* UberCloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberCloneApp.swift; sourceTree = "<group>"; };
 		946510822C374200002C0128 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				944E39EA2C37F24000896E0E /* LocationSearchActivationView.swift */,
+				944E39EE2C37F71B00896E0E /* LocationSearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				944E39EF2C37F71B00896E0E /* LocationSearchView.swift in Sources */,
 				9465109A2C3749FD002C0128 /* LocationManager.swift in Sources */,
 				944E39ED2C37F59500896E0E /* MapViewActionButton.swift in Sources */,
 				9465107F2C3741FF002C0128 /* UberCloneApp.swift in Sources */,
