@@ -35,7 +35,7 @@ struct UberMapViewRepresentable: UIViewRepresentable  {
         
         //We want to use this selected location on our mapview so that we can generate data
         if let coordinate = locationViewModel.selectedLocationCoordinate {
-            print("Debug: Selected location in map view \(coordinate)")
+            context.coordinator.addAndSelectAnnotation(withCoordinate: coordinate)
         }
     }
     
@@ -51,12 +51,21 @@ struct UberMapViewRepresentable: UIViewRepresentable  {
 // Then the MapCoordinator acts as a bridge between the UIkit code and the swiftui code.
 extension UberMapViewRepresentable {
     class MapCoordinator: NSObject, MKMapViewDelegate {
+        
+        //Make: -properties
+        
+        
+        
         let parent: UberMapViewRepresentable //allows the coordinator to communicate back with the swift ui view.
         
+        
+        //Make: -Lifecycle
         init(parent: UberMapViewRepresentable) {
             self.parent = parent
             super.init()
         }
+        
+        //Mark: -MKMapViewDelegate
         
         //this mapView method below tells the MKMapViewDelegate that the location was updated
         //so we want to gain access to that userLocation parameter and create a region on our mapview so that we can zoom in on that region and display the users location.
@@ -65,9 +74,19 @@ extension UberMapViewRepresentable {
                 center: CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude),
                 span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05) // the span is the zoom
             )
-    
+            
+            
             //BASCIALLY WE ADDING THIS REGION INSIDE THE UberMapViewRepresentable WHICH IS THE SWIFTUI CODE. SO THAT IT CAN BE DISPLAYED IN OUR SWIFTUI
             parent.mapView.setRegion(region, animated: true)
+        }
+        
+        // MARK: - Helpers
+        
+        func addAndSelectAnnotation(withCoordinate coordinate: CLLocationCoordinate2D) {
+            let anno = MKPointAnnotation()
+            anno.coordinate = coordinate
+            self.parent.mapView.addAnnotation(anno)
+            self.parent.mapView.selectAnnotation(anno, animated: true)
         }
     }
 }
