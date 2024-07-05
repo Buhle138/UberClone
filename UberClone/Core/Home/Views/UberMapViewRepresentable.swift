@@ -29,12 +29,14 @@ struct UberMapViewRepresentable: UIViewRepresentable  {
         return mapView
     }
     
-    //We are going to use thie function below in order to update our map view. if the user makes changes
-    //changes such as changes in their location.
+    //We are going to use thie function below in order to update our map view (in swiftui). if the user makes changes
+    //changes such as changes in their location through coordinates.
     func updateUIView(_ uiView: UIViewType, context: Context) {
         
         //We want to use this selected location on our mapview so that we can generate data
         if let coordinate = locationViewModel.selectedLocationCoordinate {
+            //REMEMBER coordinator is the bridge between UIKit and Swiftui
+            //We use the context to get access to the coordinator
             context.coordinator.addAndSelectAnnotation(withCoordinate: coordinate)
         }
     }
@@ -82,11 +84,42 @@ extension UberMapViewRepresentable {
         
         // MARK: - Helpers
         
+        //This method helps us get the marker that marks the location onto our map.
         func addAndSelectAnnotation(withCoordinate coordinate: CLLocationCoordinate2D) {
+            //we are using this line of code below in order to ensure that we only have one marker for each search we don't want the markers to remain onto the mapview. that's why we say removeAnnotations.
+            parent.mapView.removeAnnotations(parent.mapView.annotations)
             let anno = MKPointAnnotation()
             anno.coordinate = coordinate
             self.parent.mapView.addAnnotation(anno)
             self.parent.mapView.selectAnnotation(anno, animated: true)
+            
+            //This line of code below allows the mapview to automatically zoom out in order to adjust to the location that is far away.
+            self.parent.mapView.showAnnotations(parent.mapView.annotations, animated: true)
+        }
+        
+        
+        
+        
+        //with this method below we want to generate a route to be displayed on the map. a route from the users current location to their preferred destination.
+        func getDestinationRoute(from userLocation: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D, completion: @escaping(MKRoute) -> Void) {
+            let userPlacemark = MKPlacemark(coordinate: userLocation)
+            let destinationPlacemark = MKPlacemark(coordinate: destination)
+            let request = MKDirections.Request()
+            request.source = MKMapItem(placemark: userPlacemark)
+            request.destination = MKMapItem(placemark: destinationPlacemark)
+            let directions = MKDirections(request: request)
+            
+            directions.calculate { response, error in
+                if let error = error {
+                    print("Failed to get directions with error \(error.localizedDescription)")
+                    return
+                }
+                
+                //we will be given three potential routes what we want is the first one because it's the fastest route.
+                guard let route = response?.routes.first else {return}
+                
+                completion(route)
+            }
         }
     }
 }
