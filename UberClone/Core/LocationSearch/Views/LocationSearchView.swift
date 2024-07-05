@@ -4,14 +4,13 @@
 //
 //  Created by Buhle Radzilani on 2024/07/05.
 //
-
 import SwiftUI
 
 struct LocationSearchView: View {
     
     @State private var startLocationText = ""
-    @State private var destinationLocationText = ""
-    @StateObject var viewModel = LocationSearchViewModel()
+    @Binding var showLocationSearchView: Bool
+    @EnvironmentObject var viewModel :  LocationSearchViewModel
     
     var body: some View {
         VStack {
@@ -58,7 +57,16 @@ struct LocationSearchView: View {
             ScrollView{
                 VStack(alignment: .leading){
                     ForEach(viewModel.results, id: \.self) { result in
+                        //when we tap on each of  locationSearchResultCell we want to dispmiss the showLocationSearchView.
                         LocationSearchResultsCell(title: result.title, subtitle: result.subtitle)
+                            .onTapGesture {
+                                //Selecting the location the user has clicked on
+                                //we are passing in the title which we will then use in our mapview representable so that we can use it to show it to the mapview representable.
+                                viewModel.selectedLocation(result.title)
+                                showLocationSearchView.toggle()
+                                
+                               
+                            }
                     }
                 }
             }
@@ -70,6 +78,6 @@ struct LocationSearchView: View {
 
 struct LocationSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        LocationSearchView()
+        LocationSearchView(showLocationSearchView: .constant(false))
     }
 }

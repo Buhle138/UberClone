@@ -18,6 +18,8 @@ struct UberMapViewRepresentable: UIViewRepresentable  {
     
     let locationManager = LocationManager()
     
+    @EnvironmentObject var locationViewModel: LocationSearchViewModel
+    
     func makeUIView(context: Context) -> some UIView {
         mapView.delegate = context.coordinator
         mapView.isRotateEnabled  = false
@@ -30,7 +32,9 @@ struct UberMapViewRepresentable: UIViewRepresentable  {
     //We are going to use thie function below in order to update our map view. if the user makes changes
     //changes such as changes in their location.
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        
+        if let selectedLocation = locationViewModel.selectedLocation {
+            print("Debug: Selected location in map view \(selectedLocation)")
+        }
     }
     
     func makeCoordinator() -> MapCoordinator {

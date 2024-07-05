@@ -1,0 +1,23 @@
+{
+  "configurations" : [
+    {
+      "id" : "D7855124-BD3B-4833-B52A-8B3400CC714A",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:UberClone.xcodeproj",
+      "identifier" : "9465107A2C3741FF002C0128",
+      "name" : "UberClone"
+    }
+  },
+  "testTargets" : [
+
+  ],
+  "version" : 1
+}

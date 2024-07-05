@@ -16,6 +16,8 @@ class LocationSearchViewModel: NSObject, ObservableObject {
     
     @Published var results = [MKLocalSearchCompletion]()
     
+    @Published var selectedLocation: String?
+    
     private let searchCompleter = MKLocalSearchCompleter()
     
     //this query will be made by the user to search for their location
@@ -31,6 +33,15 @@ class LocationSearchViewModel: NSObject, ObservableObject {
         super.init()
         searchCompleter.delegate = self
         searchCompleter.queryFragment = queryFragment
+    }
+    
+    //Make: -Helpers
+    
+    
+    //The  purpose of this function is to select the location which the user has selected. 
+    func selectedLocation(_ location: String) {
+        self.selectedLocation = location
+        print("Debug: Selected location is \(self.selectedLocation)")
     }
 }
 
