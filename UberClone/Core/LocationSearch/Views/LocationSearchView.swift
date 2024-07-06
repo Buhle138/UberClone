@@ -9,7 +9,7 @@ import SwiftUI
 struct LocationSearchView: View {
     
     @State private var startLocationText = ""
-    @Binding var showLocationSearchView: Bool
+    @Binding var mapState: MapViewState
     @EnvironmentObject var viewModel :  LocationSearchViewModel
     
     var body: some View {
@@ -63,7 +63,7 @@ struct LocationSearchView: View {
                                 //Selecting the location the user has clicked on
                                 //we are passing in the title which we will then use in our mapview representable so that we can use it to show it to the mapview representable.
                                 viewModel.selectedLocation(result)
-                                showLocationSearchView.toggle()
+                                mapState = .locationSelected //once we tap on any location the state now will be locationSelected.
                                 
                                
                             }
@@ -78,6 +78,6 @@ struct LocationSearchView: View {
 
 struct LocationSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        LocationSearchView(showLocationSearchView: .constant(false))
+        LocationSearchView(mapState: .constant(.searchingForLocation))
     }
 }

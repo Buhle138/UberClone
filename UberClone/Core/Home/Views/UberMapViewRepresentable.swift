@@ -18,6 +18,8 @@ struct UberMapViewRepresentable: UIViewRepresentable  {
     
     let locationManager = LocationManager()
     
+    @Binding var mapState: MapViewState
+    
     @EnvironmentObject var locationViewModel: LocationSearchViewModel
     
     func makeUIView(context: Context) -> some UIView {
@@ -32,6 +34,8 @@ struct UberMapViewRepresentable: UIViewRepresentable  {
     //We are going to use thie function below in order to update our map view (in swiftui). if the user makes changes
     //changes such as changes in their location through coordinates.
     func updateUIView(_ uiView: UIViewType, context: Context) {
+        
+        print("Debug Map State is \(mapState)")
         
         //We want to use this selected location on our mapview so that we can generate data
         if let coordinate = locationViewModel.selectedLocationCoordinate {
@@ -89,12 +93,11 @@ extension UberMapViewRepresentable {
         
         // MARK: - Helpers
         
-       //Drawing the actual route onto the Mapview
+       //Drawing the actual polyline onto the Mapview
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
             let polyline = MKPolylineRenderer(overlay: overlay)
             polyline.strokeColor = .systemBlue
             polyline.lineWidth = 6
-            
             return polyline
         }
         
@@ -142,5 +145,15 @@ extension UberMapViewRepresentable {
                 completion(route)
             }
         }
+        
+        //function below is there to clear the map view when we click on the back button.
+        
+        func clearMapView() {
+            //removing all of the over lays and re-center the mapview.
+            
+            parent.mapView.removeAnnotations(parent.mapView.annotations)
+            parent.mapView.removeOverlays(parent.mapView.overlays)
+        }
+        
     }
 }
