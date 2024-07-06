@@ -38,6 +38,7 @@ struct UberMapViewRepresentable: UIViewRepresentable  {
             //REMEMBER coordinator is the bridge between UIKit and Swiftui
             //We use the context to get access to the coordinator
             context.coordinator.addAndSelectAnnotation(withCoordinate: coordinate)
+            context.coordinator.configurePolyline(withDestinationCoordinate: coordinate)
         }
     }
     
@@ -59,6 +60,7 @@ extension UberMapViewRepresentable {
         
         
         let parent: UberMapViewRepresentable //allows the coordinator to communicate back with the swift ui view.
+        var userLocationCoordinate: CLLocationCoordinate2D?
         
         
         //Make: -Lifecycle
@@ -72,6 +74,9 @@ extension UberMapViewRepresentable {
         //this mapView method below tells the MKMapViewDelegate that the location was updated
         //so we want to gain access to that userLocation parameter and create a region on our mapview so that we can zoom in on that region and display the users location.
         func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+            
+            //note that mapView has the userLocation coordinates so we'll pass those coordinates into that empty field of userLocationCoordinate.
+            self.userLocationCoordinate = userLocation.coordinate
             let region = MKCoordinateRegion(
                 center: CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude),
                 span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05) // the span is the zoom
@@ -83,6 +88,15 @@ extension UberMapViewRepresentable {
         }
         
         // MARK: - Helpers
+        
+       //Drawing the actual route onto the Mapview
+        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+            let polyline = MKPolylineRenderer(overlay: overlay)
+            polyline.strokeColor = .systemBlue
+            polyline.lineWidth = 6
+            
+            return polyline
+        }
         
         //This method helps us get the marker that marks the location onto our map.
         func addAndSelectAnnotation(withCoordinate coordinate: CLLocationCoordinate2D) {
@@ -97,8 +111,15 @@ extension UberMapViewRepresentable {
             self.parent.mapView.showAnnotations(parent.mapView.annotations, animated: true)
         }
         
-        
-        
+        //This is method is for setting up the polyline
+        func configurePolyline(withDestinationCoordinate coordinate: CLLocationCoordinate2D) {
+            
+            guard let userLocationCoordinate = self.userLocationCoordinate else {return }
+            getDestinationRoute(from: userLocationCoordinate, to: coordinate) { route in
+                self.parent.mapView.addOverlay(route.polyline)
+            
+            }
+        }
         
         //with this method below we want to generate a route to be displayed on the map. a route from the users current location to their preferred destination.
         func getDestinationRoute(from userLocation: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D, completion: @escaping(MKRoute) -> Void) {
