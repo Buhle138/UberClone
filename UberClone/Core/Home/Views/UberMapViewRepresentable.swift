@@ -37,13 +37,22 @@ struct UberMapViewRepresentable: UIViewRepresentable  {
         
         print("Debug Map State is \(mapState)")
         
-        //We want to use this selected location on our mapview so that we can generate data
-        if let coordinate = locationViewModel.selectedLocationCoordinate {
-            //REMEMBER coordinator is the bridge between UIKit and Swiftui
-            //We use the context to get access to the coordinator
-            context.coordinator.addAndSelectAnnotation(withCoordinate: coordinate)
-            context.coordinator.configurePolyline(withDestinationCoordinate: coordinate)
+        switch mapState {
+        case .noInput:
+            context.coordinator.clearMapViewAndRecenterOnUserLocation()
+            break
+        case .locationSelected:
+            //We want to use this selected location on our mapview so that we can generate data
+            if let coordinate = locationViewModel.selectedLocationCoordinate {
+                //REMEMBER coordinator is the bridge between UIKit and Swiftui
+                //We use the context to get access to the coordinator
+                context.coordinator.addAndSelectAnnotation(withCoordinate: coordinate) //Adding that red marker onto our mapview
+                context.coordinator.configurePolyline(withDestinationCoordinate: coordinate) //Adding the polyline using the route. 
+            }
+        case .searchingForLocation:
+            break
         }
+        
     }
     
     func makeCoordinator() -> MapCoordinator {
@@ -66,6 +75,8 @@ extension UberMapViewRepresentable {
         let parent: UberMapViewRepresentable //allows the coordinator to communicate back with the swift ui view.
         var userLocationCoordinate: CLLocationCoordinate2D?
         
+        var currentRegion: MKCoordinateRegion?
+        
         
         //Make: -Lifecycle
         init(parent: UberMapViewRepresentable) {
@@ -86,6 +97,7 @@ extension UberMapViewRepresentable {
                 span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05) // the span is the zoom
             )
             
+            self.currentRegion = region
             
             //BASCIALLY WE ADDING THIS REGION INSIDE THE UberMapViewRepresentable WHICH IS THE SWIFTUI CODE. SO THAT IT CAN BE DISPLAYED IN OUR SWIFTUI
             parent.mapView.setRegion(region, animated: true)
@@ -148,11 +160,17 @@ extension UberMapViewRepresentable {
         
         //function below is there to clear the map view when we click on the back button.
         
-        func clearMapView() {
+        func clearMapViewAndRecenterOnUserLocation() {
             //removing all of the over lays and re-center the mapview.
             
             parent.mapView.removeAnnotations(parent.mapView.annotations)
+            
+            //this code will clear the mapview when we click on the back button.
             parent.mapView.removeOverlays(parent.mapView.overlays)
+            
+            if let currentRegion = currentRegion {
+                parent.mapView.setRegion(currentRegion, animated: true)
+            }
         }
         
     }
