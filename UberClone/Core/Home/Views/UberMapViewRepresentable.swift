@@ -132,7 +132,6 @@ extension UberMapViewRepresentable {
             guard let userLocationCoordinate = self.userLocationCoordinate else {return }
             getDestinationRoute(from: userLocationCoordinate, to: coordinate) { route in
                 self.parent.mapView.addOverlay(route.polyline)
-            
             }
         }
         
