@@ -11,6 +11,10 @@ struct MapViewActionButton: View {
     
     //SINCE THERE IS BINDING HERE THIS VARIABLE WILL CHANGE VALUE OF THE SHOWLOCATIONSEARCH VARIABLE INSIDE OF THE HOMEVIEW
     @Binding var mapState: MapViewState
+    
+    //we are using this view model so that we can set the selectedLocationCoordinates to null after selecting a location. To avoid getting multiple polylines on the map
+    @EnvironmentObject var viewModel: LocationSearchViewModel
+    
     var body: some View {
         Button {
             withAnimation (.spring()){
@@ -37,6 +41,9 @@ struct MapViewActionButton: View {
         case .locationSelected:
             //this is for when the user has selected a location we'll change the mapstate to no input. 
             mapState = .noInput
+            
+            //making sure that the selectedLocationCoordinate is null so that we don't have multiple Polylines onto the screen. 
+            viewModel.selectedLocationCoordinate = nil
         
         }
     }
@@ -54,5 +61,6 @@ struct MapViewActionButton: View {
 struct MapViewActionButton_Previews: PreviewProvider {
     static var previews: some View {
         MapViewActionButton(mapState: .constant(.noInput))
+
     }
 }

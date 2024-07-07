@@ -44,6 +44,7 @@ struct UberMapViewRepresentable: UIViewRepresentable  {
         case .locationSelected:
             //We want to use this selected location on our mapview so that we can generate data
             if let coordinate = locationViewModel.selectedLocationCoordinate {
+                print("DEBUG: Coordinate is \(coordinate)")
                 //REMEMBER coordinator is the bridge between UIKit and Swiftui
                 //We use the context to get access to the coordinator
                 context.coordinator.addAndSelectAnnotation(withCoordinate: coordinate) //Adding that red marker onto our mapview
@@ -121,13 +122,12 @@ extension UberMapViewRepresentable {
             anno.coordinate = coordinate
             self.parent.mapView.addAnnotation(anno)
             self.parent.mapView.selectAnnotation(anno, animated: true)
-            
-         
-            
         }
         
         //This is method is for setting up the polyline
         func configurePolyline(withDestinationCoordinate coordinate: CLLocationCoordinate2D) {
+            
+            //code below ensures that userLocationCoordinate not null if it is null then the function exits.
             guard let userLocationCoordinate = self.userLocationCoordinate else {return }
             getDestinationRoute(from: userLocationCoordinate, to: coordinate) { route in
                 self.parent.mapView.addOverlay(route.polyline)
