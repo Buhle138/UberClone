@@ -9,6 +9,8 @@ import Foundation
 
 
 enum RideType: Int, CaseIterable, Identifiable {
+    
+//CaseIterable allows us to loop through all the cases using the forEach loop in our Ride request view
     case uberX
     case black
     case uberXL
