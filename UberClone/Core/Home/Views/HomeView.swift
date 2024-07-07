@@ -40,6 +40,8 @@ struct HomeView: View {
                     .transition(.move(edge: .bottom))
             }
         }
+        .edgesIgnoringSafeArea(.bottom) // removing that spacing below the the ride view
+        
     }
 }
 

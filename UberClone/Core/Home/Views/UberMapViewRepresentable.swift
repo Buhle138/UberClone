@@ -122,16 +122,21 @@ extension UberMapViewRepresentable {
             self.parent.mapView.addAnnotation(anno)
             self.parent.mapView.selectAnnotation(anno, animated: true)
             
-            //This line of code below allows the mapview to automatically zoom out in order to adjust to the location that is far away.
-            self.parent.mapView.showAnnotations(parent.mapView.annotations, animated: true)
+         
+            
         }
         
         //This is method is for setting up the polyline
         func configurePolyline(withDestinationCoordinate coordinate: CLLocationCoordinate2D) {
-            
             guard let userLocationCoordinate = self.userLocationCoordinate else {return }
             getDestinationRoute(from: userLocationCoordinate, to: coordinate) { route in
                 self.parent.mapView.addOverlay(route.polyline)
+                
+                // this line of code below ensures that the mapview is shrunk into a rectangle with those dimensions below
+                //note: rect stands for rectangle!
+                let rect =  self.parent.mapView.mapRectThatFits(route.polyline.boundingMapRect, edgePadding: .init(top: 64, left: 32, bottom: 500, right: 32))
+                self.parent.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
+                
             }
         }
         
