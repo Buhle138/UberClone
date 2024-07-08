@@ -15,10 +15,10 @@ import CoreLocation
 class LocationManager: NSObject, ObservableObject {
     
     private let locationManager = CLLocationManager()
+    
+//That static keyword allows it to be accessible on other classes!. 
    static let shared = LocationManager() //This static keyword acts like an environment object making this LocationManager() constructor available to be utilised.  on other structs such as your UberMapViewRepresentable
     @Published var userLocation: CLLocationCoordinate2D?
-    
-    
     override init() {
         super.init()
         locationManager.delegate = self

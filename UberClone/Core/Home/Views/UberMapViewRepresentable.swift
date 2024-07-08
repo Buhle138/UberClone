@@ -12,6 +12,8 @@ import MapKit
 // in thie case we are using UIkit mapview  because swiftui does not have those features yet
 //UIViewRepresentable allows us to use the UIkit mapKit into our swiftui.
 
+
+//Don't make any updates of any fields of any class whether it's the view model or whatever, just don't make them
 struct UberMapViewRepresentable: UIViewRepresentable  {
     
     let mapView = MKMapView()

@@ -78,6 +78,7 @@ class LocationSearchViewModel: NSObject, ObservableObject {
     
     
     //calculating the price of the ride depending on the type of the ride (uber-x, uber-Large)
+    //In this function we are getting the trip distance and passing it into the computePrice method
     func computeRidePrice(forType type: RideType) -> Double {
         guard let destinationCoordinate = selectedLocationCoordinate else { return 0.0 }
         
@@ -91,7 +92,6 @@ class LocationSearchViewModel: NSObject, ObservableObject {
         
         return type.computePrice(for: tripDistanceInMeters)
     }
-    
 }
 
 

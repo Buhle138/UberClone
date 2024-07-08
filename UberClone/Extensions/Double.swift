@@ -17,7 +17,7 @@ extension Double {
         return formatter
     }
     
-    func toCurrency() {
+    func toCurrency() -> String {
         return currencyFormatter.string(for: self) ?? ""
     }
     

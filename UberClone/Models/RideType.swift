@@ -43,7 +43,6 @@ enum RideType: Int, CaseIterable, Identifiable {
     
     func computePrice(for distanceInMeters: Double) -> Double {
         let distanceInMiles = distanceInMeters / 1600
-        
         switch self {
         case .uberX: return distanceInMiles * 1.5 + baseFare
         case .black: return distanceInMiles * 2.0 + baseFare
