@@ -15,6 +15,9 @@ import CoreLocation
 class LocationManager: NSObject, ObservableObject {
     
     private let locationManager = CLLocationManager()
+   static let shared = LocationManager() //This static keyword acts like an environment object making this LocationManager() constructor available to be utilised.  on other structs such as your UberMapViewRepresentable
+    @Published var userLocation: CLLocationCoordinate2D?
+    
     
     override init() {
         super.init()
@@ -31,8 +34,10 @@ extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         
-        //We want to return soon as we get the users location.
-        guard !locations.isEmpty else {return}
+       //if the locations is not empty continue  to the next line of code (locationManager.stopUpdatingLocation() or else exit the functions.
+        guard let location = locations.first else {return}
+        
+        self.userLocation = location.coordinate
         
         locationManager.stopUpdatingLocation()
     }

@@ -12,6 +12,8 @@ struct HomeView: View {
     //THIS VARIABLE VALUE DEPENDS ON THE BINDING VARIABLE OF THE MAPVIEW ACTION BUTTON.
     @State private var mapState = MapViewState.noInput
     
+    @EnvironmentObject var locationViewModel: LocationSearchViewModel
+    
     var body: some View {
         ZStack(alignment: .bottom) { //This z Stack is where we are going to present this ride request view.
             ZStack(alignment: .top) {
@@ -41,6 +43,14 @@ struct HomeView: View {
             }
         }
         .edgesIgnoringSafeArea(.bottom) // removing that spacing below the the ride view
+        .onReceive(LocationManager.shared.$userLocation) { location in
+            
+            //getting the user location on our home view
+            if let location = location {
+                locationViewModel.userLocation = location
+            }
+        }
+        
         
     }
 }
