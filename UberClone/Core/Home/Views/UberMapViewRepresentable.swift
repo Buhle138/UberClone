@@ -45,8 +45,8 @@ struct UberMapViewRepresentable: UIViewRepresentable  {
             break
         case .locationSelected:
             //We want to use this selected location on our mapview so that we can generate data
-            if let coordinate = locationViewModel.selectedLocationCoordinate {
-                print("DEBUG: Coordinate is \(coordinate)")
+            if let coordinate = locationViewModel.selectedUberLocation?.coordinate {
+               
                 //REMEMBER coordinator is the bridge between UIKit and Swiftui
                 //We use the context to get access to the coordinator
                 context.coordinator.addAndSelectAnnotation(withCoordinate: coordinate) //Adding that red marker onto our mapview
@@ -131,7 +131,7 @@ extension UberMapViewRepresentable {
             
             //code below ensures that userLocationCoordinate not null if it is null then the function exits.
             guard let userLocationCoordinate = self.userLocationCoordinate else {return }
-            getDestinationRoute(from: userLocationCoordinate, to: coordinate) { route in
+            parent.locationViewModel.getDestinationRoute(from: userLocationCoordinate, to: coordinate) { route in
                 self.parent.mapView.addOverlay(route.polyline)
                 
                 // this line of code below ensures that the mapview is shrunk into a rectangle with those dimensions below
@@ -143,26 +143,7 @@ extension UberMapViewRepresentable {
         }
         
         //with this method below we want to generate a route to be displayed on the map. a route from the users current location to their preferred destination.
-        func getDestinationRoute(from userLocation: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D, completion: @escaping(MKRoute) -> Void) {
-            let userPlacemark = MKPlacemark(coordinate: userLocation)
-            let destinationPlacemark = MKPlacemark(coordinate: destination)
-            let request = MKDirections.Request()
-            request.source = MKMapItem(placemark: userPlacemark)
-            request.destination = MKMapItem(placemark: destinationPlacemark)
-            let directions = MKDirections(request: request)
-            
-            directions.calculate { response, error in
-                if let error = error {
-                    print("Failed to get directions with error \(error.localizedDescription)")
-                    return
-                }
-                
-                //we will be given three potential routes what we want is the first one because it's the fastest route.
-                guard let route = response?.routes.first else {return}
-                
-                completion(route)
-            }
-        }
+       
         
         //function below is there to clear the map view when we click on the back button.
         

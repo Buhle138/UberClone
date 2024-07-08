@@ -43,7 +43,7 @@ struct MapViewActionButton: View {
             mapState = .noInput
             
             //making sure that the selectedLocationCoordinate is null so that we don't have multiple Polylines onto the screen. 
-            viewModel.selectedLocationCoordinate = nil
+            viewModel.selectedUberLocation = nil
         
         }
     }
