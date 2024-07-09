@@ -10,8 +10,7 @@ import MapKit
 
 
 class LocationSearchViewModel: NSObject, ObservableObject {
-    
-    
+
     //Make: -Properties
     
     @Published var results = [MKLocalSearchCompletion]()
@@ -124,7 +123,6 @@ class LocationSearchViewModel: NSObject, ObservableObject {
         pickUpTime = formatter.string(from: Date())
         dropOffTime = formatter.string(from: Date() + expectedTravelTime)
     }
-    
 }
 
 

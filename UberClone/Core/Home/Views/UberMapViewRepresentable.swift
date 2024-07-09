@@ -37,11 +37,12 @@ struct UberMapViewRepresentable: UIViewRepresentable  {
     //changes such as changes in their location through coordinates.
     func updateUIView(_ uiView: UIViewType, context: Context) {
         
-        print("Debug Map State is \(mapState)")
         
         switch mapState {
         case .noInput:
             context.coordinator.clearMapViewAndRecenterOnUserLocation()
+            break
+        case .searchingForLocation:
             break
         case .locationSelected:
             //We want to use this selected location on our mapview so that we can generate data
@@ -52,8 +53,9 @@ struct UberMapViewRepresentable: UIViewRepresentable  {
                 context.coordinator.addAndSelectAnnotation(withCoordinate: coordinate) //Adding that red marker onto our mapview
                 context.coordinator.configurePolyline(withDestinationCoordinate: coordinate) //Adding the polyline using the route. 
             }
-        case .searchingForLocation:
             break
+        case .polylineAdded:
+            break //this break keyword after the switch ensures that we do not keep on adding the polyline after we have added it. 
         }
         
     }
@@ -86,8 +88,6 @@ extension UberMapViewRepresentable {
             self.parent = parent
             super.init()
         }
-        
-        //Mark: -MKMapViewDelegate
         
         //this mapView method below tells the MKMapViewDelegate that the location was updated
         //so we want to gain access to that userLocation parameter and create a region on our mapview so that we can zoom in on that region and display the users location.
@@ -133,7 +133,7 @@ extension UberMapViewRepresentable {
             guard let userLocationCoordinate = self.userLocationCoordinate else {return }
             parent.locationViewModel.getDestinationRoute(from: userLocationCoordinate, to: coordinate) { route in
                 self.parent.mapView.addOverlay(route.polyline)
-                
+                self.parent.mapState = .polylineAdded
                 // this line of code below ensures that the mapview is shrunk into a rectangle with those dimensions below
                 //note: rect stands for rectangle!
                 let rect =  self.parent.mapView.mapRectThatFits(route.polyline.boundingMapRect, edgePadding: .init(top: 64, left: 32, bottom: 500, right: 32))

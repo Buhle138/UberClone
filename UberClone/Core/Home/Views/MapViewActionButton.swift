@@ -38,7 +38,7 @@ struct MapViewActionButton: View {
         switch state {
         case .noInput: print("Debug: no input")
         case .searchingForLocation: mapState = .noInput
-        case .locationSelected:
+        case .locationSelected, .polylineAdded:
             //this is for when the user has selected a location we'll change the mapstate to no input. 
             mapState = .noInput
             
@@ -51,8 +51,9 @@ struct MapViewActionButton: View {
     func imageNameForState(_ state: MapViewState) -> String {
         switch state {
         case .noInput: return "line.3.horizontal"
-        case .searchingForLocation, .locationSelected:
-       return "arrow.left"
+        case .searchingForLocation, .locationSelected, .polylineAdded:
+            return "arrow.left"
+        default: return "line.3.horizontal"
         
         }
     }
