@@ -102,6 +102,7 @@ struct RideRequestView: View {
                             .foregroundColor(Color(type == selectedRideType ? .white : .black))
                             //if the type is selected then it's entire background will be blue if not selected then it's background will  be white.
                             .background(Color(type == selectedRideType ? .systemBlue: .systemGroupedBackground))
+                            .background(type == selectedRideType ? .blue : Color.theme.secondaryBackgroundColor)
                             .scaleEffect(type == selectedRideType ? 1.2 : 1.0)
                             .cornerRadius(10)
                             
@@ -143,7 +144,7 @@ struct RideRequestView: View {
                 }
                 
                 .frame(height: 50)
-                .background(Color(.systemGroupedBackground))
+                .background(Color.theme.secondaryBackgroundColor)
                 .cornerRadius(10)
                 .padding(.horizontal)
                 
@@ -162,7 +163,7 @@ struct RideRequestView: View {
             }
         }
         .padding(.bottom, 24)
-        .background(.white)
+        .background(Color.theme.backgroundColor)
         .cornerRadius(12)
     }
     
