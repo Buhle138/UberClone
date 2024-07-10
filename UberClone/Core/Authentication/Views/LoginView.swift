@@ -66,20 +66,22 @@ struct LoginView: View {
                                 .frame(width: UIScreen.main.bounds.width - 32, height: 0.7)
                         }
                         
+                        Button {
+                            
+                        } label: {
+                            Text("Forgot Password?")
+                                .font(.system(size: 13, weight: .semibold))
+                                .foregroundColor(.white)
+                                .padding(.top)
+                                .padding(.top)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        
                     }
                     .padding(.horizontal)
                     .padding(.top, 12)
                     
-                    Button {
-                        
-                    } label: {
-                        Text("Forgot Password?")
-                            .font(.system(size: 13, weight: .semibold))
-                            .foregroundColor(.white)
-                            .padding(.top)
-                            .padding(.trailing, 28)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .trailing)
+                   
 
                     //social sign in view
                     VStack {
@@ -89,28 +91,75 @@ struct LoginView: View {
                             Rectangle()
                                 .frame(width: 76, height: 1)
                                 .foregroundColor(.white)
+                                .opacity(0.5)
                             
                             Text("Sign in with social")
                                 .foregroundColor(.white)
                                 .fontWeight(.semibold)
+                            
+                            Rectangle()
+                                .frame(width: 76, height: 1)
+                                .foregroundColor(.white)
+                                .opacity(0.5)
                         }
                         
                         //sign up button
                         HStack(spacing: 24){
-                            Image("facebook-sign-in-icon")
-                                .resizable()
-                                .frame(width: 44, height: 44)
+                            Button {
+                                
+                            } label: {
+                                Image("facebook-sign-in-icon")
+                                    .resizable()
+                                    .frame(width: 44, height: 44)
+                            }
+
+                            Button {
+                                
+                            } label: {
+                                Image("google-sign-in-icon")
+                                    .resizable()
+                                    .frame(width: 44, height: 44)
+                            }
+
                             
-                            Image("google-sign-in-icon")
-                                .resizable()
-                                .frame(width: 44, height: 44)
                             
                         }
                     }
                     .padding(.vertical)
-                    //sign in button
                     
+                    Spacer()
+                    //sign in button
+                    Button {
+                        
+                    } label: {
+                        HStack {
+                            Text("Sign In")
+                                .foregroundColor(.black)
+                            
+                            Image(systemName: "arrow.right")
+                        }
+                    }
+                    .frame(width: UIScreen.main.bounds.width - 32, height: 50)
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    
+                    Spacer()
+
                     //sign up button
+                    
+                    Button {
+                        
+                    } label: {
+                        HStack {
+                            Text("Don't have an account?")
+                                .font(.system(size: 14))
+                            
+                            Text("Sign Up")
+                                .font(.system(size: 14, weight: .semibold))
+                        }
+                        .foregroundColor(.white)
+                    }
+
                 }
                 
                
