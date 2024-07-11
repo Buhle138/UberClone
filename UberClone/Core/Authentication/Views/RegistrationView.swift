@@ -16,6 +16,8 @@ struct RegistrationView: View {
     
     @Environment(\.dismiss) private var dismiss
     
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
     var body: some View {
         ZStack {
             Color(.black)
@@ -43,16 +45,16 @@ struct RegistrationView: View {
                     VStack(spacing: 56) {
                         CustomInputField(text: $fullname, title: "Full Name", placeholder: "Enter your name")
                         
-                        CustomInputField(text: $fullname, title: "Full Name", placeholder: "Enter your name")
+                        CustomInputField(text: $email, title: "Email Address", placeholder: "Enter your email")
                         
-                        CustomInputField(text: $fullname, title: "Full Name", placeholder: "Enter your name")
+                        CustomInputField(text: $password, title: "Create Password", placeholder: "Enter your password", isSecureField: true)
                     }
                     .padding(.leading)
                     
                     Spacer()
                     
                     Button {
-                        
+                        authViewModel.registerUser(withEmail: email, password: password, fullname: fullname)
                     } label: {
                         HStack {
                             Text("SIGN UP")
