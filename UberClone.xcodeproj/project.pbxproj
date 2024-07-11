@@ -20,6 +20,7 @@
 		945E8E0B2C3D9A0700078EC9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945E8E0A2C3D9A0700078EC9 /* Color.swift */; };
 		945E8E102C3DBFAC00078EC9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945E8E0F2C3DBFAC00078EC9 /* LoginView.swift */; };
 		945E8E122C3DBFBA00078EC9 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945E8E112C3DBFBA00078EC9 /* RegistrationView.swift */; };
+		945E8E152C401EBE00078EC9 /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945E8E142C401EBE00078EC9 /* CustomInputField.swift */; };
 		9465107F2C3741FF002C0128 /* UberCloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9465107E2C3741FF002C0128 /* UberCloneApp.swift */; };
 		946510832C374200002C0128 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946510822C374200002C0128 /* Assets.xcassets */; };
 		946510862C374200002C0128 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946510852C374200002C0128 /* Preview Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		945E8E0A2C3D9A0700078EC9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		945E8E0F2C3DBFAC00078EC9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		945E8E112C3DBFBA00078EC9 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		945E8E142C401EBE00078EC9 /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
 		9465107B2C3741FF002C0128 /* UberClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UberClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9465107E2C3741FF002C0128 /* UberCloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberCloneApp.swift; sourceTree = "<group>"; };
 		946510822C374200002C0128 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -133,6 +135,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		945E8E132C401E9200078EC9 /* ReusableItems */ = {
+			isa = PBXGroup;
+			children = (
+				945E8E142C401EBE00078EC9 /* CustomInputField.swift */,
+			);
+			path = ReusableItems;
+			sourceTree = "<group>";
+		};
 		946510722C3741FF002C0128 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +163,7 @@
 		9465107D2C3741FF002C0128 /* UberClone */ = {
 			isa = PBXGroup;
 			children = (
+				945E8E132C401E9200078EC9 /* ReusableItems */,
 				9465109B2C374BE4002C0128 /* Info.plist */,
 				946510902C3742C8002C0128 /* App */,
 				9465108F2C3742C1002C0128 /* Core */,
@@ -322,6 +333,7 @@
 				946510962C37442E002C0128 /* HomeView.swift in Sources */,
 				944E39EB2C37F24000896E0E /* LocationSearchActivationView.swift in Sources */,
 				945E8E102C3DBFAC00078EC9 /* LoginView.swift in Sources */,
+				945E8E152C401EBE00078EC9 /* CustomInputField.swift in Sources */,
 				945E8E052C3AF28A00078EC9 /* RideType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
