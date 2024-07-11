@@ -19,7 +19,7 @@ struct RegistrationView: View {
             Color(.black)
                 .ignoresSafeArea()
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 20) {
                 Button {
                     
                 } label: {
@@ -37,30 +37,38 @@ struct RegistrationView: View {
                 
                 Spacer()
                 
-              
-                
-                VStack(spacing: 56) {
-                    CustomInputField(text: $fullname, title: "Full Name", placeholder: "Enter your name")
-                    
-                    CustomInputField(text: $fullname, title: "Full Name", placeholder: "Enter your name")
-                    
-                    CustomInputField(text: $fullname, title: "Full Name", placeholder: "Enter your name")
-                }
-                .padding(.leading)
-                
-                Button {
-                    
-                } label: {
-                    HStack {
-                        Text("SIGN UP")
-                            .foregroundColor(.black)
+                VStack {
+                    VStack(spacing: 56) {
+                        CustomInputField(text: $fullname, title: "Full Name", placeholder: "Enter your name")
                         
-                        Image(systemName: "arrow.right")
+                        CustomInputField(text: $fullname, title: "Full Name", placeholder: "Enter your name")
+                        
+                        CustomInputField(text: $fullname, title: "Full Name", placeholder: "Enter your name")
                     }
+                    .padding(.leading)
+                    
+                    Spacer()
+                    
+                    Button {
+                        
+                    } label: {
+                        HStack {
+                            Text("SIGN UP")
+                                .foregroundColor(.black)
+                            
+                            Image(systemName: "arrow.right")
+                                .foregroundColor(.black)
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 32, height: 50)
+                    }
+                   
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    
+                    Spacer()
                 }
-                .frame(width: UIScreen.main.bounds.width - 32, height: 50)
-                .background(Color.white)
-                .cornerRadius(10)
+                
+               
 
             }
             .foregroundColor(.white)
