@@ -27,7 +27,7 @@ struct LoginView: View {
                             .renderingMode(.template)
                             .foregroundColor(.white)
                            
-                            .frame(width: 200, height: 200)
+                            .frame(width: 150, height: 150)
                         
                         //Title
                         Text("Uber")
