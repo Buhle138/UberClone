@@ -36,35 +36,10 @@ struct LoginView: View {
                     VStack(spacing: 32) {
                         
                         //Input field 1
-                        VStack(alignment: .leading, spacing: 12){
-                            //title
-                            Text("Email Address")
-                                .foregroundColor(.white)
-                                .fontWeight(.semibold)
-                                .font(.footnote)
-                            //text field
-                            TextField("Email", text: $email)
-                                .foregroundColor(.white)
-                            //divider
-                            Rectangle()
-                                .foregroundColor(Color(.init(white: 1, alpha: 0.3)))
-                                .frame(width: UIScreen.main.bounds.width - 32, height: 0.7)
-                        }
+                        CustomInputField(text: $email, title: "Email Address", placeholder: "name@example.com")
+                         
                         //input field 2
-                        VStack(alignment: .leading, spacing: 12){
-                            //title
-                            Text("Password")
-                                .foregroundColor(.white)
-                                .fontWeight(.semibold)
-                                .font(.footnote)
-                            //text field
-                            TextField("Enter your password", text: $password)
-                                .foregroundColor(.white)
-                            //divider
-                            Rectangle()
-                                .foregroundColor(Color(.init(white: 1, alpha: 0.3)))
-                                .frame(width: UIScreen.main.bounds.width - 32, height: 0.7)
-                        }
+                      CustomInputField(text: $password, title: "Password", placeholder: "Enter your password", isSecureField: true)
                         
                         Button {
                             

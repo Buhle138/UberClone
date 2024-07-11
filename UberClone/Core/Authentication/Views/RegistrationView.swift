@@ -8,8 +8,63 @@
 import SwiftUI
 
 struct RegistrationView: View {
+    @State private var fullname = ""
+    
+    @State private var email = ""
+    
+    @State private var password = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Color(.black)
+                .ignoresSafeArea()
+            
+            VStack(alignment: .leading) {
+                Button {
+                    
+                } label: {
+                    Image(systemName: "arrow.left")
+                        .font(.title)
+                        .imageScale(.medium)
+                        .padding()
+                }
+                
+                Text("Create new account")
+                    .font(.system(size: 40))
+                    .fontWeight(.semibold)
+                    .multilineTextAlignment(.leading)
+                    .frame(width: 250)
+                
+                Spacer()
+                
+              
+                
+                VStack(spacing: 56) {
+                    CustomInputField(text: $fullname, title: "Full Name", placeholder: "Enter your name")
+                    
+                    CustomInputField(text: $fullname, title: "Full Name", placeholder: "Enter your name")
+                    
+                    CustomInputField(text: $fullname, title: "Full Name", placeholder: "Enter your name")
+                }
+                .padding(.leading)
+                
+                Button {
+                    
+                } label: {
+                    HStack {
+                        Text("SIGN UP")
+                            .foregroundColor(.black)
+                        
+                        Image(systemName: "arrow.right")
+                    }
+                }
+                .frame(width: UIScreen.main.bounds.width - 32, height: 50)
+                .background(Color.white)
+                .cornerRadius(10)
+
+            }
+            .foregroundColor(.white)
+        }
     }
 }
 
