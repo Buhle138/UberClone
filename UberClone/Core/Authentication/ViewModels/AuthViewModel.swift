@@ -25,11 +25,8 @@ class AuthViewModel: ObservableObject {
                 print("Debug failed to sign in with error \(error.localizedDescription)")
                 return
             }
-            
-            print("Debug Sign user in successfully")
-            print("Debug: user id \(result?.user.uid)")
+            self.userSession = result?.user
         }
-        
     }
     
     func registerUser(withEmail email: String, password: String, fullname: String) {
@@ -38,7 +35,8 @@ class AuthViewModel: ObservableObject {
                 print("Debug failed to sign up with error \(error.localizedDescription)")
                 return
             }
-          
+            //letting the userSession know that we have a user when we are registered!.
+            self.userSession = result?.user
         }
     }
     
@@ -46,6 +44,7 @@ class AuthViewModel: ObservableObject {
        
         do {
             try Auth.auth().signOut()
+            self.userSession = nil
             print("DEBUG did sign out ")
         }catch let error {
             print("DEBUG: Failed to sign out with error \(error.localizedDescription)")
