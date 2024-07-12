@@ -8,15 +8,20 @@
 import SwiftUI
 import MapKit
 
+//This UIViewRepresentable allows us to create a view using UI Kit and represent that view using swiftui.
+
 
 // in thie case we are using UIkit mapview  because swiftui does not have those features yet
 //UIViewRepresentable allows us to use the UIkit mapKit into our swiftui.
 
 
+//THE CONTEXT.COORDINATOR ALLOWS US TO GET ACCESS TO METHODS THAT WHERE CREATED THROUGH UIKIT CODE BELOW LIKE GETTING REGIONS
+
+
 //Don't make any updates of any fields of any class whether it's the view model or whatever, just don't make them
 struct UberMapViewRepresentable: UIViewRepresentable  {
     
-    let mapView = MKMapView()
+    let mapView = MKMapView() // this is the UI kit Mapview
     
     let locationManager = LocationManager.shared
     
@@ -24,6 +29,10 @@ struct UberMapViewRepresentable: UIViewRepresentable  {
     
     @EnvironmentObject var locationViewModel: LocationSearchViewModel
     
+    
+    //Making the Mapkit UI view so that it can be represented in our swiftui view
+    
+    //we are creating UIKit view within Swiftui context
     func makeUIView(context: Context) -> some UIView {
         mapView.delegate = context.coordinator
         mapView.isRotateEnabled  = false
@@ -61,10 +70,12 @@ struct UberMapViewRepresentable: UIViewRepresentable  {
     }
     
     func makeCoordinator() -> MapCoordinator {
-        return MapCoordinator(parent: self)
+        return MapCoordinator(parent: self) //Below we are passing in this entire struct into the MapCoordinator.
     }
     
 }
+
+
 
 
 // All of this code inside of UberMapViewRepresentable represents Swiftui code
