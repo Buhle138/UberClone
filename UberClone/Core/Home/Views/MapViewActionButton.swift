@@ -14,6 +14,7 @@ struct MapViewActionButton: View {
     
     //we are using this view model so that we can set the selectedLocationCoordinates to null after selecting a location. To avoid getting multiple polylines on the map
     @EnvironmentObject var viewModel: LocationSearchViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         Button {
@@ -36,7 +37,7 @@ struct MapViewActionButton: View {
     
     func actionforState(_ state: MapViewState) {
         switch state {
-        case .noInput: print("Debug: no input")
+        case .noInput: authViewModel.signout()
         case .searchingForLocation: mapState = .noInput
         case .locationSelected, .polylineAdded:
             //this is for when the user has selected a location we'll change the mapstate to no input. 
