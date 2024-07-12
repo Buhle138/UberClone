@@ -17,6 +17,7 @@ class AuthViewModel: ObservableObject {
     
     init() {
         userSession = Auth.auth().currentUser
+        fetchUser()
     }
     
     func signIn(withEmail email: String, password: String){
@@ -59,6 +60,28 @@ class AuthViewModel: ObservableObject {
             print("DEBUG did sign out ")
         }catch let error {
             print("DEBUG: Failed to sign out with error \(error.localizedDescription)")
+        }
+    }
+    
+    func fetchUser () {
+        
+        //grabbing the currently logged in users id
+        guard let uid = self.userSession?.uid else {return}
+        
+        Firestore.firestore().collection("users").document(uid).getDocument { snapshot, error in
+            if let error = error {
+                print("Debug failed to sign up with error \(error.localizedDescription)")
+                return
+            }
+            
+            guard let snapshot = snapshot else {return}
+            
+            //Here we are fetching this data from firebase in the format of the User struct model which we created under the models folder.
+           guard  let user = try? snapshot.data(as: User.self) else {return}
+            
+            print("DEBUG: User is \(user.fullname)")
+            print("DEBUG: Email is \(user.email)")
+            
         }
     }
 }
