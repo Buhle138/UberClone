@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestoreSwift //so that we can encode the user
 
 class AuthViewModel: ObservableObject {
     
@@ -36,7 +37,17 @@ class AuthViewModel: ObservableObject {
                 return
             }
             //letting the userSession know that we have a user when we are registered!.
-            self.userSession = result?.user
+           
+            guard let firebaseUser = result?.user else {return}
+            
+            self.userSession = firebaseUser
+            
+            let user = User(fullname: fullname, email: email, uid: firebaseUser.uid)
+            
+            //sending this user Object into a format which firestore can read
+            guard let encodedUser = try? Firestore.Encoder().encode(user) else {return}
+            
+            Firestore.firestore().collection("users").document(firebaseUser.uid).setData(encodedUser)
         }
     }
     
