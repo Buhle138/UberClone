@@ -15,6 +15,11 @@ struct SideMenuOptionView: View {
             Image(systemName: viewModel.imageName)
                 .font(.title2)
                 .imageScale(.medium)
+            
+            Text(viewModel.title)
+                .font(.system(size: 16, weight: .semibold))
+            
+            Spacer()
         }
     }
 }

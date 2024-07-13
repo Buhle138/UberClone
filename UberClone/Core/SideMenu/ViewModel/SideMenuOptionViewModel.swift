@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SideMenuOptionViewModel: Int, CaseIterable {
+enum SideMenuOptionViewModel: Int, CaseIterable, Identifiable {
     case trips
     case wallet
     case settings
@@ -29,5 +29,9 @@ enum SideMenuOptionViewModel: Int, CaseIterable {
         case .settings: return "gear"
         case .messages: return "bubble.left"
         }
+    }
+    
+    var id: Int {
+        return self.rawValue
     }
 }
