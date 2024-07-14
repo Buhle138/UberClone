@@ -26,12 +26,12 @@ struct HomeView: View {
             //if there is not user currently loggin in the show the login screen.
             if authViewModel.userSession == nil {
                 LoginView()
-            }else {
+            } else if let user = authViewModel.currentUser {
                 
                 NavigationStack {
                     ZStack {
                         if showSideMenu {
-                            SideMenuView()
+                            SideMenuView(user: user)
                         }
                         mapView
                             .offset(x: showSideMenu ? 316 : 0)

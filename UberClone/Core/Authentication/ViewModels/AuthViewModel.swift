@@ -14,6 +14,7 @@ class AuthViewModel: ObservableObject {
     //this session is going to store information about the currently logged in user.
     //if there is nothing in this userSession that means no user is currently logged in .
     @Published var userSession: FirebaseAuth.User?
+    @Published var currentUser: User?
     
     init() {
         userSession = Auth.auth().currentUser
@@ -79,8 +80,7 @@ class AuthViewModel: ObservableObject {
             //Here we are fetching this data from firebase in the format of the User struct model which we created under the models folder.
            guard  let user = try? snapshot.data(as: User.self) else {return}
             
-            print("DEBUG: User is \(user.fullname)")
-            print("DEBUG: Email is \(user.email)")
+            self.currentUser = user
             
         }
     }
