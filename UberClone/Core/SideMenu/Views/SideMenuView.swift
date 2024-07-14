@@ -66,9 +66,14 @@ struct SideMenuView: View {
                 //option list
                 VStack {
                     ForEach(SideMenuOptionViewModel.allCases) { viewModel in
-                        SideMenuOptionView(viewModel: viewModel)
-                            .padding()
+                        NavigationLink(value: viewModel) {
+                            SideMenuOptionView(viewModel: viewModel)
+                                .padding()
+                        }
                     }
+                }
+                .navigationDestination(for: SideMenuOptionViewModel.self) { viewModel in
+                    Text(viewModel.title)
                 }
                 
                 Spacer()
