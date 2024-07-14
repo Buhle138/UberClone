@@ -12,6 +12,7 @@ struct SideMenuOptionView: View {
     
     var body: some View {
         HStack (spacing: 16) {
+            //These are the Images of the icons (Your tips, wallet, settings etc).
             Image(systemName: viewModel.imageName)
                 .font(.title2)
                 .imageScale(.medium)
@@ -21,6 +22,7 @@ struct SideMenuOptionView: View {
             
             Spacer()
         }
+        .foregroundColor(Color.theme.primaryTextColor)
     }
 }
 

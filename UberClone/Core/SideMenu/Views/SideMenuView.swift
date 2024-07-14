@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SideMenuView: View {
     var body: some View {
-        NavigationStack {
+   
             VStack (spacing: 40){
                 //header view
                 
@@ -80,7 +80,7 @@ struct SideMenuView: View {
               
             }
             .padding(.top)
-        }
+        
     }
 }
 

@@ -28,13 +28,19 @@ struct HomeView: View {
                 LoginView()
             }else {
                 
-                ZStack {
-                    if showSideMenu {
-                        SideMenuView()
+                NavigationStack {
+                    ZStack {
+                        if showSideMenu {
+                            SideMenuView()
+                        }
+                        mapView
+                            .offset(x: showSideMenu ? 316 : 0)
+                            .shadow(color: showSideMenu ? .black : .clear, radius: 10)
                     }
-                    mapView
-                        .offset(x: showSideMenu ? 316 : 0)
-                        .shadow(color: showSideMenu ? .black : .clear, radius: 10)
+                    .onAppear{
+                        //taking the user back to the home view after clicking the back button by not showing the side menu.
+                        showSideMenu = false
+                    }
                 }
               
                
