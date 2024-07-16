@@ -39,6 +39,7 @@
 		9465109A2C3749FD002C0128 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946510992C3749FD002C0128 /* LocationManager.swift */; };
 		946B1CED2C45079B00BBC8FC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B1CEC2C45079B00BBC8FC /* SettingsView.swift */; };
 		946B1CF12C46C26F00BBC8FC /* HeaderInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B1CF02C46C26F00BBC8FC /* HeaderInfoView.swift */; };
+		946B1CF32C46C43B00BBC8FC /* SavedLocationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B1CF22C46C43B00BBC8FC /* SavedLocationRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		9465109B2C374BE4002C0128 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		946B1CEC2C45079B00BBC8FC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		946B1CF02C46C26F00BBC8FC /* HeaderInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderInfoView.swift; sourceTree = "<group>"; };
+		946B1CF22C46C43B00BBC8FC /* SavedLocationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 			children = (
 				945E8E142C401EBE00078EC9 /* CustomInputField.swift */,
 				946B1CF02C46C26F00BBC8FC /* HeaderInfoView.swift */,
+				946B1CF22C46C43B00BBC8FC /* SavedLocationRowView.swift */,
 			);
 			path = ReusableItems;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				946510982C37452F002C0128 /* UberMapViewRepresentable.swift in Sources */,
 				945E8E092C3C872300078EC9 /* UberLocation.swift in Sources */,
 				945E8E2D2C41AF2A00078EC9 /* SideMenuView.swift in Sources */,
+				946B1CF32C46C43B00BBC8FC /* SavedLocationRowView.swift in Sources */,
 				946510962C37442E002C0128 /* HomeView.swift in Sources */,
 				944E39EB2C37F24000896E0E /* LocationSearchActivationView.swift in Sources */,
 				945E8E102C3DBFAC00078EC9 /* LoginView.swift in Sources */,
