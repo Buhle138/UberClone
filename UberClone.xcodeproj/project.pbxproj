@@ -40,6 +40,7 @@
 		946B1CED2C45079B00BBC8FC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B1CEC2C45079B00BBC8FC /* SettingsView.swift */; };
 		946B1CF12C46C26F00BBC8FC /* HeaderInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B1CF02C46C26F00BBC8FC /* HeaderInfoView.swift */; };
 		946B1CF32C46C43B00BBC8FC /* SavedLocationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B1CF22C46C43B00BBC8FC /* SavedLocationRowView.swift */; };
+		946B1CF52C46C79F00BBC8FC /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B1CF42C46C79F00BBC8FC /* SettingsRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		946B1CEC2C45079B00BBC8FC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		946B1CF02C46C26F00BBC8FC /* HeaderInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderInfoView.swift; sourceTree = "<group>"; };
 		946B1CF22C46C43B00BBC8FC /* SavedLocationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationRowView.swift; sourceTree = "<group>"; };
+		946B1CF42C46C79F00BBC8FC /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				945E8E142C401EBE00078EC9 /* CustomInputField.swift */,
 				946B1CF02C46C26F00BBC8FC /* HeaderInfoView.swift */,
 				946B1CF22C46C43B00BBC8FC /* SavedLocationRowView.swift */,
+				946B1CF42C46C79F00BBC8FC /* SettingsRowView.swift */,
 			);
 			path = ReusableItems;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				945E8E102C3DBFAC00078EC9 /* LoginView.swift in Sources */,
 				945E8E152C401EBE00078EC9 /* CustomInputField.swift in Sources */,
 				945E8E052C3AF28A00078EC9 /* RideType.swift in Sources */,
+				946B1CF52C46C79F00BBC8FC /* SettingsRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
