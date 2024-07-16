@@ -38,6 +38,7 @@
 		946510982C37452F002C0128 /* UberMapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946510972C37452F002C0128 /* UberMapViewRepresentable.swift */; };
 		9465109A2C3749FD002C0128 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946510992C3749FD002C0128 /* LocationManager.swift */; };
 		946B1CED2C45079B00BBC8FC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B1CEC2C45079B00BBC8FC /* SettingsView.swift */; };
+		946B1CF12C46C26F00BBC8FC /* HeaderInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B1CF02C46C26F00BBC8FC /* HeaderInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		946510992C3749FD002C0128 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		9465109B2C374BE4002C0128 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		946B1CEC2C45079B00BBC8FC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		946B1CF02C46C26F00BBC8FC /* HeaderInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				945E8E142C401EBE00078EC9 /* CustomInputField.swift */,
+				946B1CF02C46C26F00BBC8FC /* HeaderInfoView.swift */,
 			);
 			path = ReusableItems;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				945E8E262C4067DC00078EC9 /* AuthViewModel.swift in Sources */,
 				944E39F62C38C5D200896E0E /* MapViewState.swift in Sources */,
 				946B1CED2C45079B00BBC8FC /* SettingsView.swift in Sources */,
+				946B1CF12C46C26F00BBC8FC /* HeaderInfoView.swift in Sources */,
 				945E8E282C411B4000078EC9 /* User.swift in Sources */,
 				944E39ED2C37F59500896E0E /* MapViewActionButton.swift in Sources */,
 				944E39F12C37FB2C00896E0E /* LocationSearchResultsCell.swift in Sources */,
