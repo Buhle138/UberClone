@@ -44,6 +44,7 @@
 		946B1CF72C47FF2D00BBC8FC /* SavedLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B1CF62C47FF2D00BBC8FC /* SavedLocationViewModel.swift */; };
 		946B1CF92C480AB200BBC8FC /* SavedLocationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B1CF82C480AB200BBC8FC /* SavedLocationSearchView.swift */; };
 		946B1CFB2C48221E00BBC8FC /* LocationSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B1CFA2C48221E00BBC8FC /* LocationSearchResultsView.swift */; };
+		946B1CFD2C487FD700BBC8FC /* SavedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B1CFC2C487FD700BBC8FC /* SavedLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		946B1CF62C47FF2D00BBC8FC /* SavedLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationViewModel.swift; sourceTree = "<group>"; };
 		946B1CF82C480AB200BBC8FC /* SavedLocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationSearchView.swift; sourceTree = "<group>"; };
 		946B1CFA2C48221E00BBC8FC /* LocationSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchResultsView.swift; sourceTree = "<group>"; };
+		946B1CFC2C487FD700BBC8FC /* SavedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +260,7 @@
 				945E8E042C3AF28A00078EC9 /* RideType.swift */,
 				945E8E082C3C872300078EC9 /* UberLocation.swift */,
 				945E8E272C411B4000078EC9 /* User.swift */,
+				946B1CFC2C487FD700BBC8FC /* SavedLocation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				945E8E2F2C41C5AC00078EC9 /* SideMenuOptionViewModel.swift in Sources */,
 				945E8E032C39D5B400078EC9 /* RideRequestView.swift in Sources */,
 				945E8E072C3C790100078EC9 /* Double.swift in Sources */,
+				946B1CFD2C487FD700BBC8FC /* SavedLocation.swift in Sources */,
 				945E8E122C3DBFBA00078EC9 /* RegistrationView.swift in Sources */,
 				945E8E262C4067DC00078EC9 /* AuthViewModel.swift in Sources */,
 				944E39F62C38C5D200896E0E /* MapViewState.swift in Sources */,
