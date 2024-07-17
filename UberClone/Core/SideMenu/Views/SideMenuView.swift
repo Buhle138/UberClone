@@ -79,8 +79,20 @@ struct SideMenuView: View {
                         }
                     }
                 }
-                .navigationDestination(for: SideMenuOptionViewModel.self) { viewModel in
-                    Text(viewModel.title)
+                .navigationDestination(for: SideMenuOptionViewModel.self){
+                viewModel in
+                    switch viewModel {
+                    case .trips:
+                        Text("Trips")
+                        
+                    case .wallet:
+                        Text("Wallet")
+                    case .settings:
+                        SettingsView(user: user)
+                       
+                    case .messages: Text("Messages")
+                    
+                    }
                 }
                 
                 Spacer()
@@ -93,6 +105,9 @@ struct SideMenuView: View {
 
 struct SideMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        SideMenuView(user: User(fullname: "John", email: "john@gmail.com", uid: "1234"))
+        NavigationStack {
+            SideMenuView(user: User(fullname: "John", email: "john@gmail.com", uid: "1234"))
+        }
+       
     }
 }
