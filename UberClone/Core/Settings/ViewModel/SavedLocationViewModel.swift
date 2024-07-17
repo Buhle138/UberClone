@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum SavedLocationViewModel: Int, CaseIterable {
+enum SavedLocationViewModel: Int, CaseIterable, Identifiable {
     case home
     case work
     
@@ -25,4 +25,13 @@ enum SavedLocationViewModel: Int, CaseIterable {
         case .work: return "archivebox.circle.fill"
         }
     }
+    
+    var subtitle: String {
+        switch self {
+        case     .home: return "Add Home"
+        case     .work: return "Add Work"
+        }
+    }
+    
+    var id: Int {return self.rawValue}
 }
