@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SideMenuView: View {
     
+   
+    
     private let user: User
     
     init(user: User) {
