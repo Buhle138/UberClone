@@ -54,27 +54,7 @@ struct LocationSearchView: View {
           
             //list view
             
-            ScrollView{
-                VStack(alignment: .leading){
-                    ForEach(viewModel.results, id: \.self) { result in
-                        //when we tap on each of  locationSearchResultCell we want to dispmiss the showLocationSearchView.
-                        LocationSearchResultsCell(title: result.title, subtitle: result.subtitle)
-                            .onTapGesture {
-                               
-                                //we'll get an animation when we call the ride request view
-                                withAnimation(.spring()) {
-                                    
-                                    //Selecting the location the user has clicked on
-                                    //we are passing in the title which we will then use in our mapview representable so that we can use it to show it to the mapview representable.
-                                    viewModel.selectedLocation(result)
-                                    mapState = .locationSelected //once we tap on any location the state now will be locationSelected.
-                                    
-                                }
-                               
-                            }
-                    }
-                }
-            }
+            LocationSearchResultsView(viewModel: viewModel)
         }
         .background(Color.theme.backgroundColor)
         
@@ -86,5 +66,32 @@ struct LocationSearchView_Previews: PreviewProvider {
     
     static var previews: some View {
         LocationSearchView(mapState: .constant(.searchingForLocation))
+    }
+}
+
+struct LocationSearchResultsView: View {
+    @StateObject var viewModel: LocationSearchViewModel
+    var body: some View {
+        ScrollView{
+            VStack(alignment: .leading){
+                ForEach(viewModel.results, id: \.self) { result in
+                    //when we tap on each of  locationSearchResultCell we want to dispmiss the showLocationSearchView.
+                    LocationSearchResultsCell(title: result.title, subtitle: result.subtitle)
+                        .onTapGesture {
+                            
+                            //we'll get an animation when we call the ride request view
+                            withAnimation(.spring()) {
+                                
+                                //Selecting the location the user has clicked on
+                                //we are passing in the title which we will then use in our mapview representable so that we can use it to show it to the mapview representable.
+                                viewModel.selectedLocation(result)
+                                //mapState = .locationSelected //once we tap on any location the state now will be locationSelected.
+                                
+                            }
+                            
+                        }
+                }
+            }
+        }
     }
 }

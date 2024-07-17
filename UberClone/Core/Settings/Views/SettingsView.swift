@@ -30,7 +30,7 @@ struct SettingsView: View {
                         
                         
                         NavigationLink {
-                            Text(viewModel.title)
+                           SavedLocationSearchView()
                         } label: {
                             SavedLocationRowView(viewModel: viewModel)
                         }

@@ -8,6 +8,11 @@
 import Foundation
 import MapKit
 
+enum LocationResultsViewConfig {
+    case ride
+    case saveLocation
+    
+}
 
 class LocationSearchViewModel: NSObject, ObservableObject {
 
@@ -44,24 +49,29 @@ class LocationSearchViewModel: NSObject, ObservableObject {
     
     //Make: -Helpers
     
-    
+    //This function below is called when we select a location.
     //The  purpose of this function is to select the location which the user has selected. 
-    func selectedLocation(_ localSearch: MKLocalSearchCompletion) {
-        locationSearch(forLocalSearchCompletion: localSearch) { response, error in
-    
-            //THE CODE THAT WE ARE WRITTING HERE IS THE CODE OF THE COMPLETION HANLDER
-            //IF THERE IS AN ERROR WE HANLDE THE ERROR BUT IF THERE IS NO ERROR THEN WE GET THE COORDINATES (LONGITUDES AND LATITUDES)
-            if let error = error {
-                print("DEVUG: Location search failed with error \(error.localizedDescription)")
-                return
+    func selectedLocation(_ localSearch: MKLocalSearchCompletion, config: LocationResultsViewConfig) {
+        switch config {
+        case .ride:
+            locationSearch(forLocalSearchCompletion: localSearch) { response, error in
+        
+                //THE CODE THAT WE ARE WRITTING HERE IS THE CODE OF THE COMPLETION HANLDER
+                //IF THERE IS AN ERROR WE HANLDE THE ERROR BUT IF THERE IS NO ERROR THEN WE GET THE COORDINATES (LONGITUDES AND LATITUDES)
+                if let error = error {
+                    print("DEVUG: Location search failed with error \(error.localizedDescription)")
+                    return
+                }
+                guard let item = response?.mapItems.first else {return}
+                
+                let coordinate = item.placemark.coordinate
+                
+                self.selectedUberLocation = UberLocation(title: localSearch.title, coordinate: coordinate)
+                
+                print("Debug: Location coordinates \(coordinate)")
             }
-            guard let item = response?.mapItems.first else {return}
-            
-            let coordinate = item.placemark.coordinate
-            
-            self.selectedUberLocation = UberLocation(title: localSearch.title, coordinate: coordinate)
-            
-            print("Debug: Location coordinates \(coordinate)")
+        case .saveLocation:
+            print("DEBUG: saved location here...")
         }
     }
     
