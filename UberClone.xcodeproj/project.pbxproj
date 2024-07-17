@@ -42,6 +42,7 @@
 		946B1CF32C46C43B00BBC8FC /* SavedLocationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B1CF22C46C43B00BBC8FC /* SavedLocationRowView.swift */; };
 		946B1CF52C46C79F00BBC8FC /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B1CF42C46C79F00BBC8FC /* SettingsRowView.swift */; };
 		946B1CF72C47FF2D00BBC8FC /* SavedLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B1CF62C47FF2D00BBC8FC /* SavedLocationViewModel.swift */; };
+		946B1CF92C480AB200BBC8FC /* SavedLocationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946B1CF82C480AB200BBC8FC /* SavedLocationSearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		946B1CF22C46C43B00BBC8FC /* SavedLocationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationRowView.swift; sourceTree = "<group>"; };
 		946B1CF42C46C79F00BBC8FC /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 		946B1CF62C47FF2D00BBC8FC /* SavedLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationViewModel.swift; sourceTree = "<group>"; };
+		946B1CF82C480AB200BBC8FC /* SavedLocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationSearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				944E39EA2C37F24000896E0E /* LocationSearchActivationView.swift */,
 				944E39EE2C37F71B00896E0E /* LocationSearchView.swift */,
 				944E39F02C37FB2C00896E0E /* LocationSearchResultsCell.swift */,
+				946B1CF82C480AB200BBC8FC /* SavedLocationSearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				945E8E262C4067DC00078EC9 /* AuthViewModel.swift in Sources */,
 				944E39F62C38C5D200896E0E /* MapViewState.swift in Sources */,
 				946B1CED2C45079B00BBC8FC /* SettingsView.swift in Sources */,
+				946B1CF92C480AB200BBC8FC /* SavedLocationSearchView.swift in Sources */,
 				946B1CF12C46C26F00BBC8FC /* HeaderInfoView.swift in Sources */,
 				945E8E282C411B4000078EC9 /* User.swift in Sources */,
 				944E39ED2C37F59500896E0E /* MapViewActionButton.swift in Sources */,
