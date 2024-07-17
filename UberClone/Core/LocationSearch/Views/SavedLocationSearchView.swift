@@ -29,7 +29,7 @@ struct SavedLocationSearchView: View {
             .padding(.top)
             Spacer()
             
-            LocationSearchResultsView(viewModel: locationSearchViewModel)
+            LocationSearchResultsView(viewModel: locationSearchViewModel, config: .saveLocation)
         }
         .navigationTitle("Add Home")
     }
