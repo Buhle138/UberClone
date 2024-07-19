@@ -7,6 +7,7 @@
 
 import Foundation
 import MapKit
+import Firebase
 
 enum LocationResultsViewConfig {
     case ride
@@ -52,10 +53,10 @@ class LocationSearchViewModel: NSObject, ObservableObject {
     //This function below is called when we select a location.
     //The  purpose of this function is to select the location which the user has selected. 
     func selectedLocation(_ localSearch: MKLocalSearchCompletion, config: LocationResultsViewConfig) {
-        switch config {
-        case .ride:
-            locationSearch(forLocalSearchCompletion: localSearch) { response, error in
         
+        locationSearch(forLocalSearchCompletion: localSearch) { response, error in
+            
+         
                 //THE CODE THAT WE ARE WRITTING HERE IS THE CODE OF THE COMPLETION HANLDER
                 //IF THERE IS AN ERROR WE HANLDE THE ERROR BUT IF THERE IS NO ERROR THEN WE GET THE COORDINATES (LONGITUDES AND LATITUDES)
                 if let error = error {
@@ -65,14 +66,26 @@ class LocationSearchViewModel: NSObject, ObservableObject {
                 guard let item = response?.mapItems.first else {return}
                 
                 let coordinate = item.placemark.coordinate
-                
+            
+            switch config {
+            case .ride:
                 self.selectedUberLocation = UberLocation(title: localSearch.title, coordinate: coordinate)
+            case .saveLocation:
+                guard let uid = Auth.auth().currentUser?.uid else { return }
                 
-                print("Debug: Location coordinates \(coordinate)")
+                let savedLocation = SavedLocation(
+                    title: localSearch.title,
+                    address: localSearch.subtitle,
+                    coordinates: GeoPoint(latitude: coordinate.latitude, longitude: coordinate.longitude))
+                
+                //Encoding the object so that it can be uploaded to firestore
+                guard let encodedLocation = try? Firestore.Encoder().encode(savedLocation) else { return }
+                Firestore.firestore().collection("users").document(uid)
             }
-        case .saveLocation:
-            print("DEBUG: saved location here...")
+            
         }
+        
+       
     }
     
     func locationSearch(forLocalSearchCompletion localSearch: MKLocalSearchCompletion, completion: @escaping MKLocalSearch.CompletionHandler ){

@@ -10,5 +10,5 @@ import Firebase
 struct SavedLocation: Codable {
     let title: String
     let address: String
-    let coordinates: GeoPoint
+    let coordinates: GeoPoint //Allows us to upload coordinates to our database firebase.
 }

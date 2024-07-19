@@ -13,7 +13,7 @@ struct User: Codable {
     let fullname: String
     let email: String
     let uid: String
-    let homeLocation: SavedLocation?
-    let userLocation: SavedLocation?
+    var homeLocation: SavedLocation?
+    var userLocation: SavedLocation?
     
 }
