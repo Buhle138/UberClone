@@ -9,9 +9,11 @@ import Foundation
 import MapKit
 import Firebase
 
+
+//we need to know whether we are looking to save a location or we are looking for a ride.
 enum LocationResultsViewConfig {
     case ride
-    case saveLocation
+    case saveLocation (SavedLocationViewModel)
     
 }
 
@@ -70,7 +72,9 @@ class LocationSearchViewModel: NSObject, ObservableObject {
             switch config {
             case .ride:
                 self.selectedUberLocation = UberLocation(title: localSearch.title, coordinate: coordinate)
-            case .saveLocation:
+            case .saveLocation(let viewModel):
+                
+                //getting the uid of the current user so that we know which user this saved location belongs to.
                 guard let uid = Auth.auth().currentUser?.uid else { return }
                 
                 let savedLocation = SavedLocation(
@@ -80,7 +84,9 @@ class LocationSearchViewModel: NSObject, ObservableObject {
                 
                 //Encoding the object so that it can be uploaded to firestore
                 guard let encodedLocation = try? Firestore.Encoder().encode(savedLocation) else { return }
-                Firestore.firestore().collection("users").document(uid)
+                Firestore.firestore().collection("users").document(uid).updateData([
+                    viewModel.databaseKey : encodedLocation
+                ])
             }
             
         }

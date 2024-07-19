@@ -11,6 +11,8 @@ struct SavedLocationSearchView: View {
     
     @State private var text = ""
     @StateObject var locationSearchViewModel = LocationSearchViewModel()
+    let config: SavedLocationViewModel
+    
     
     var body: some View {
         VStack {
@@ -29,16 +31,16 @@ struct SavedLocationSearchView: View {
             .padding(.top)
             Spacer()
             
-            LocationSearchResultsView(viewModel: locationSearchViewModel, config: .saveLocation)
+            LocationSearchResultsView(viewModel: locationSearchViewModel, config: .saveLocation(config))
         }
-        .navigationTitle("Add Home")
+        .navigationTitle(config.subtitle)
     }
 }
 
 struct SavedLocationSearchView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack{
-            SavedLocationSearchView()
+            SavedLocationSearchView(config: .home)
         }
        
     }
