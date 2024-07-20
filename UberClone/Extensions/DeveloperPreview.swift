@@ -5,7 +5,7 @@
 //  Created by Buhle Radzilani on 2024/07/20.
 //
 import SwiftUI
-import Foundation
+import Firebase
 
 extension PreviewProvider{
     static var dev: DeveloperPreview {
@@ -21,6 +21,7 @@ class DeveloperPreview {
         fullname: "Buhle",
         email: "Buhle@gmail.com",
         uid: NSUUID().uuidString,
+        coordinates: GeoPoint(latitude: -25, longitude: 28),
         accountType: .passenger,
         homeLocation: nil,
         workLocation: nil

@@ -44,7 +44,13 @@ class AuthViewModel: ObservableObject {
             
             self.userSession = firebaseUser
             
-            let user = User(fullname: fullname, email: email, uid: firebaseUser.uid)
+            let user = User(
+                fullname: fullname,
+                email: email,
+                uid: firebaseUser.uid,
+                coordinates: GeoPoint(latitude: -25, longitude: 28),
+                accountType: .driver
+            )
             
             //sending this user Object into a format which firestore can read
             guard let encodedUser = try? Firestore.Encoder().encode(user) else {return}

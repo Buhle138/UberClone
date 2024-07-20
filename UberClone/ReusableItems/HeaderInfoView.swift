@@ -43,9 +43,3 @@ struct HeaderInfoView: View {
         
     }
 }
-
-struct HeaderInfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        HeaderInfoView(user: User(fullname: "John", email: "john@gmail.com", uid: "1234"))
-    }
-}
