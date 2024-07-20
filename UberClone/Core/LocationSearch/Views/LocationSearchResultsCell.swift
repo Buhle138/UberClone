@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//This View represents each cell in the location search results view.
 struct LocationSearchResultsCell: View {
     let title: String
     let subtitle: String

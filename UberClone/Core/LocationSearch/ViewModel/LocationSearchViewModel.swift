@@ -13,6 +13,8 @@ import Firebase
 //we need to know whether we are looking to save a location or we are looking for a ride.
 enum LocationResultsViewConfig {
     case ride
+    
+    //When we are saving a location it can either be a home or a work location and that is why we have this associative type entered within the parameter of the saveLocation
     case saveLocation (SavedLocationViewModel)
     
 }

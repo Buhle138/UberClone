@@ -11,7 +11,7 @@ struct SavedLocationSearchView: View {
     
     @State private var text = ""
     @StateObject var locationSearchViewModel = LocationSearchViewModel()
-    let config: SavedLocationViewModel
+    let config: SavedLocationViewModel //We are initialising this variable so that we can know if we are saving this location as a home location or a work location.
     
     
     var body: some View {
@@ -20,11 +20,11 @@ struct SavedLocationSearchView: View {
                 Image(systemName: "arrow.left")
                     .font(.title2)
                     .imageScale(.medium)
-                    .padding(.leading)
+                    .padding(.leading) //adding padding on the image from the right. 
                 
                 TextField("Search for a location..", text: $locationSearchViewModel.queryFragment)
                     .frame(height: 32)
-                    .padding(.leading)
+                    .padding(.leading) //giving the 'Search for a location' text padding.
                     .background(Color(.systemGray5))
                     .padding(.trailing)
             }

@@ -87,6 +87,7 @@ extension HomeView {
                 locationViewModel.userLocation = location
             }
         }
+        //This code below means when we receive the selectedUberLocation make sure that location is not nil if it's not nill then we then update our mapState. 
         .onReceive(locationViewModel.$selectedUberLocation) { location in
             if location != nil {
                 self.mapState = .locationSelected
