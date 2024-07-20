@@ -8,11 +8,19 @@
 import Foundation
 
 
+//Distinguishing between a user and driver account type
+
+enum AccountType: Int, Codable {
+    case passenger
+    case driver
+}
+
 struct User: Codable {
     
     let fullname: String
     let email: String
     let uid: String
+    var accountType: AccountType //We are making this a variable because this account type can change.
     var homeLocation: SavedLocation?
     var workLocation: SavedLocation?
     
