@@ -16,24 +16,19 @@ struct SavedLocationSearchView: View {
     
     var body: some View {
         VStack {
-            HStack(spacing: 16) {
-                Image(systemName: "arrow.left")
-                    .font(.title2)
-                    .imageScale(.medium)
-                    .padding(.leading) //adding padding on the image from the right. 
-                
-                TextField("Search for a location..", text: $locationSearchViewModel.queryFragment)
-                    .frame(height: 32)
-                    .padding(.leading) //giving the 'Search for a location' text padding.
-                    .background(Color(.systemGray5))
-                    .padding(.trailing)
-            }
-            .padding(.top)
+            
+            TextField("Search for a location..", text: $locationSearchViewModel.queryFragment)
+                .frame(height: 32)
+                .padding(.leading) //giving the 'Search for a location' text padding.
+                .background(Color(.systemGray5))
+                .padding()
+           
             Spacer()
             
             LocationSearchResultsView(viewModel: locationSearchViewModel, config: .saveLocation(config))
         }
         .navigationTitle(config.subtitle)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
