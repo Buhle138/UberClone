@@ -30,42 +30,43 @@ class AuthViewModel: ObservableObject {
             }
             self.userSession = result?.user
             
-    /*Fetching the user once we have a successful signup so that we get the actual details of the current
-          user that signed up  */
+    /*when we sign in we need to call this method in order to fetch the details of the currently logged in user.  */
             self.fetchUser()
         }
     }
     
     func registerUser(withEmail email: String, password: String, fullname: String) {
+        guard let location = LocationManager.shared.userLocation else {return}
+      
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
                 print("Debug failed to sign up with error \(error.localizedDescription)")
                 return
             }
             //letting the userSession know that we have a user when we are registered!.
-            
+
             guard let firebaseUser = result?.user else {return}
-            
+
             self.userSession = firebaseUser
-            
+
             let user = User(
                 fullname: fullname,
                 email: email,
                 uid: firebaseUser.uid,
-                coordinates: GeoPoint(latitude: -25, longitude: 28),
+                coordinates: GeoPoint(latitude: location.latitude, longitude: location.longitude),
                 accountType: .driver
             )
-            
-            
+
+
             /*Fetching the user once we have a successful signup so that we get the actual details of the current
                   user that signed up  */
             self.currentUser = user
-            
+
             //sending this user Object into a format which firestore can read
             guard let encodedUser = try? Firestore.Encoder().encode(user) else {return}
-            
+
             Firestore.firestore().collection("users").document(firebaseUser.uid).setData(encodedUser)
-           
+
         }
     }
     
