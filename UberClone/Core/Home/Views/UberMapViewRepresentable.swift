@@ -130,6 +130,16 @@ extension UberMapViewRepresentable {
             return polyline
         }
         
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            if let annotation = annotation as? DriverAnnotation {
+                let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "driver")
+                view.image = UIImage(named: "chevron-sign-to-right")
+                return view
+            }
+            
+            return nil 
+        }
+        
         //This method helps us get the marker that marks the location onto our map.
         func addAndSelectAnnotation(withCoordinate coordinate: CLLocationCoordinate2D) {
             //we are using this line of code below in order to ensure that we only have one marker for each search we don't want the markers to remain onto the mapview. that's why we say removeAnnotations.
@@ -175,16 +185,8 @@ extension UberMapViewRepresentable {
         }
         
         func addDriversToMap(_ drivers: [User]) {
-            for driver in drivers {
-                let coordinate = CLLocationCoordinate2D(
-                    latitude: driver.coordinates.latitude,
-                    longitude: driver.coordinates.longitude)
-                
-                let anno = MKPointAnnotation()
-                anno.coordinate = coordinate
-                self.parent.mapView.addAnnotation(anno)
-                self.parent.mapView.selectAnnotation(anno, animated: true)
-            }
+            let annotations = drivers.map({DriverAnnotation(driver: $0)})
+            self.parent.mapView.addAnnotations(annotations)
         }
         
     }

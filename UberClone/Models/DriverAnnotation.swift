@@ -17,11 +17,11 @@ class DriverAnnotation: NSObject, MKAnnotation {
     
     let uid: String //getting the unique annotations for each driver so we don't get confused.
     
-    init(uid: String, geoPoint: GeoPoint ) {
+    init(driver: User ) {
         self.coordinate = CLLocationCoordinate2D(
-            latitude: geoPoint.latitude,
-            longitude: geoPoint.longitude)
-        self.uid = uid
+            latitude: driver.coordinates.latitude,
+            longitude: driver.coordinates.longitude)
+        self.uid = driver.uid
     }
     
 }
