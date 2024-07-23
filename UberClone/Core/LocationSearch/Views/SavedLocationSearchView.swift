@@ -37,6 +37,6 @@ struct SavedLocationSearchView_Previews: PreviewProvider {
         NavigationStack{
             SavedLocationSearchView(config: .home)
         }
-       
+
     }
 }

@@ -29,6 +29,10 @@ class AuthViewModel: ObservableObject {
                 return
             }
             self.userSession = result?.user
+            
+    /*Fetching the user once we have a successful signup so that we get the actual details of the current
+          user that signed up  */
+            self.fetchUser()
         }
     }
     
@@ -39,7 +43,7 @@ class AuthViewModel: ObservableObject {
                 return
             }
             //letting the userSession know that we have a user when we are registered!.
-           
+            
             guard let firebaseUser = result?.user else {return}
             
             self.userSession = firebaseUser
@@ -52,10 +56,16 @@ class AuthViewModel: ObservableObject {
                 accountType: .driver
             )
             
+            
+            /*Fetching the user once we have a successful signup so that we get the actual details of the current
+                  user that signed up  */
+            self.currentUser = user
+            
             //sending this user Object into a format which firestore can read
             guard let encodedUser = try? Firestore.Encoder().encode(user) else {return}
             
             Firestore.firestore().collection("users").document(firebaseUser.uid).setData(encodedUser)
+           
         }
     }
     

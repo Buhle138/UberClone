@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct SettingsView: View {
     private let user: User
     
@@ -33,10 +34,7 @@ struct SettingsView: View {
                         } label: {
                             SavedLocationRowView(viewModel: viewModel, user: user)
                         }
-
-                        
                     }
-                
                 }
                 
                 

@@ -61,10 +61,10 @@ struct LocationSearchView: View {
     }
 }
 
-struct LocationSearchView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        LocationSearchView()
-    }
-}
+//struct LocationSearchView_Previews: PreviewProvider {
+//
+//    static var previews: some View {
+//        LocationSearchView()
+//    }
+//}
 
