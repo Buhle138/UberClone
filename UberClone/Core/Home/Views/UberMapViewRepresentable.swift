@@ -29,6 +29,8 @@ struct UberMapViewRepresentable: UIViewRepresentable  {
     
     @EnvironmentObject var locationViewModel: LocationSearchViewModel
     
+    @EnvironmentObject var  homeViewModel: HomeViewModel
+    
     
     //Making the Mapkit UI view so that it can be represented in our swiftui view
     
@@ -50,6 +52,7 @@ struct UberMapViewRepresentable: UIViewRepresentable  {
         switch mapState {
         case .noInput:
             context.coordinator.clearMapViewAndRecenterOnUserLocation()
+            context.coordinator.addDriversToMap(homeViewModel.drivers)
             break
         case .searchingForLocation:
             break
@@ -168,6 +171,19 @@ extension UberMapViewRepresentable {
             
             if let currentRegion = currentRegion {
                 parent.mapView.setRegion(currentRegion, animated: true)
+            }
+        }
+        
+        func addDriversToMap(_ drivers: [User]) {
+            for driver in drivers {
+                let coordinate = CLLocationCoordinate2D(
+                    latitude: driver.coordinates.latitude,
+                    longitude: driver.coordinates.longitude)
+                
+                let anno = MKPointAnnotation()
+                anno.coordinate = coordinate
+                self.parent.mapView.addAnnotation(anno)
+                self.parent.mapView.selectAnnotation(anno, animated: true)
             }
         }
         

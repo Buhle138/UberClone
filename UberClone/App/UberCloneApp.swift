@@ -27,12 +27,15 @@ struct UberCloneApp: App {
     //IF YOU INSTANTIATED THIS VIEW MODEL INSIDE EACH DIFFERENT VIEW THEN YOU WHERE GOING TO HAVE A DIFFERENT VIEW MODEL FOR EACH VIEW. WE DON'T WANT THAT WE WANT TO SHARE THIS VIEW MODEL INFORMATION ACROSS ALL VIEWS USING THE SAME INFORMATION FOR ALL VIEWS. 
     @StateObject var locationViewModel = LocationSearchViewModel()
     @StateObject var authViewModel = AuthViewModel()
+    @StateObject var homeViewModel = HomeViewModel()
     
     var body: some Scene {
         WindowGroup {
             HomeView()
                 .environmentObject(locationViewModel)
                 .environmentObject(authViewModel)
+                .environmentObject(homeViewModel)
+                
         }
     }
 }

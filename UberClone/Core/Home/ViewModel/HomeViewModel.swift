@@ -11,6 +11,7 @@ import FirebaseFirestoreSwift
 
 class HomeViewModel: ObservableObject {
     
+    @Published var drivers = [User]()
     
     init() {
         fetchDrivers()
@@ -22,8 +23,12 @@ class HomeViewModel: ObservableObject {
             .getDocuments { snapshot, _ in
                 guard let documents = snapshot?.documents else {return}
                 
-                let users = documents.map({ try? $0.data(as: User.self)})
+                //if each user inside of an array is optional then we use compactMap compactMap handles the compact map.
+                //line of code below converts the documents (from firebase) into of type User
+                let drivers = documents.compactMap({ try? $0.data(as: User.self)})
+                self.drivers = drivers
                 
+             
                 
             }
     }
